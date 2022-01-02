@@ -7,9 +7,9 @@
 <h3 style="color:blue;"><%= day %></h3>
 
 <ul>
-    <li>Buy food</li>
-    <li>Cook food</li>
-    <li>Eat food</li>
+    <% listOfItems.forEach((item) => { %>
+        <li><%= item %></li>
+    <% }); %>
 </ul>
 
 <form action="/" method="post">

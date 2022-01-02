@@ -7,6 +7,7 @@ const app = express();
 app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 
+var items = ["Welcome to TODO list","Enter task in box and click ADD Task"];
 app.get("/",function(req,res){
     var today = new Date();
 
@@ -17,11 +18,11 @@ app.get("/",function(req,res){
         year: "numeric"
     };
     today = today.toLocaleDateString('hi-IN',options);
-    res.render('list',{day: today});
+    res.render('list',{day: today, listOfItems: items});
 });
 
 app.post("/", function(req,res){
-    console.log(req.body.task);
+    items.push(req.body.task);
     res.redirect("/");
 });
 
