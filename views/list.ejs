@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <head>
 <title>Dynamic ToDo List</title>
+<link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-<h1>Ultimate TODO List</h1>
-<h3 style="color:blue;"><%= day %></h3>
 
-<ul>
-    <% listOfItems.forEach((item) => { %>
-        <li><%= item %></li>
-    <% }); %>
-</ul>
+    <div class="box" id="heading">
+        <h1><%= day %></h1>
+    </div>
 
-<form action="/" method="post">
-    <input type="text" name="task" placeholder="enter task name...">
-    <input type="submit" value="ADD Task">
-</form>
+    <div class="box">
+        <% listOfItems.forEach((item) => { %>
+            <div class="item">
+                <input type="checkbox">
+                <p><%= item %></p>
+            </div>
+        <% }); %>
+
+       
+        <form class="item" action="/" method="post">
+            <input type="text" name="task" placeholder="enter task name...">
+            <button type="submit" name="button">+</button>
+        </form>
+    </div>
+
+    
 </body>
 </html>

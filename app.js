@@ -6,6 +6,7 @@ const app = express();
 
 app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static("public"));
 
 var items = ["Welcome to TODO list","Enter task in box and click ADD Task"];
 app.get("/",function(req,res){
