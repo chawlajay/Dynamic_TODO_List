@@ -1,0 +1,23 @@
+{
+  "name": "dynamic_todo_list",
+  "version": "1.0.0",
+  "description": "You can create multiple todo lists for various purposes",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chawlajay/Dynamic_TODO_List.git"
+  },
+  "author": "Jay Chawla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chawlajay/Dynamic_TODO_List/issues"
+  },
+  "homepage": "https://github.com/chawlajay/Dynamic_TODO_List#readme",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2"
+  }
+}
