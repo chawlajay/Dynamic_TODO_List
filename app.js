@@ -55,13 +55,24 @@ app.get("/about",function(req,res){
 });
 
 app.post("/", function(req,res){ 
-    let itemName = req.body.task;
+    let itemName = req.body.newItem;
     const newItem = new Item({
         name: itemName
     });
     newItem.save(function(err){
         if(err)
         console.log(err);
+    });
+    res.redirect("/");
+});
+
+app.post("/delete",function(req,res){
+    const checkedItemId = req.body.listItemId;
+    Item.deleteOne({_id: checkedItemId},function(err){
+        if(err)
+        console.log(err);
+        else
+        console.log("Item deleted from DB.");
     });
     res.redirect("/");
 });
