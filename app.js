@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
+const mongoose = require('mongoose');
 
 const app = express();
 
@@ -11,15 +12,6 @@ app.use(express.static("public"));
 var items = ["Welcome to TODO list","Enter task in box and click ADD Task"];
 var workItems = ["Welcome to Work TODO list"];
 app.get("/",function(req,res){
-    // var today = new Date();
-
-    // var options = {
-    //     weekday: "long",
-    //     day: "numeric",
-    //     month: "long",
-    //     year: "numeric"
-    // };
-    // today = today.toLocaleDateString('hi-IN',options);
     res.render('list',{listTitle: "Today", listOfItems: items});
 });
 
