@@ -17,7 +17,7 @@ const itemsSchema = {
     name: String
 };
 
-const Item = new mongoose.model("Item",itemsSchema);
+const Item = mongoose.model("Item",itemsSchema);
 
 const item1 = new Item({
     name: "Welcome to ToDo List!"
@@ -31,11 +31,22 @@ const item3 = new Item({
     name: "<-- Hit this check to delete an item."
 });
 
-item1.save();
-item2.save();
-item3.save();
+const defaultItems = [item1,item2,item3];
+
 app.get("/",function(req,res){
-    res.render('list',{listTitle: "Today", listOfItems: items});
+    Item.find({},function(err,foundItems){
+        if(!foundItems)
+        {
+            Item.insertMany(defaultItems,function(err){
+                if(!err)
+                console.log("Successfully inserted default items in DB.");
+                else
+                console.log(err);
+            });
+        }
+        res.render('list',{listTitle: "Today", listOfItems: foundItems});
+    });
+    
 });
 
 app.get("/work",function(req,res){
