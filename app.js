@@ -9,13 +9,10 @@ app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-var items = ["Welcome to TODO list","Enter task in box and click ADD Task"];
-var workItems = ["Welcome to Work TODO list"];
-
 mongoose.connect("mongodb://localhost:27017/todolistDB");
-const itemsSchema = {
+const itemsSchema = new mongoose.Schema({
     name: String
-};
+});
 
 const Item = mongoose.model("Item",itemsSchema);
 
@@ -35,7 +32,7 @@ const defaultItems = [item1,item2,item3];
 
 app.get("/",function(req,res){
     Item.find({},function(err,foundItems){
-        if(!foundItems)
+        if(foundItems.length === 0)
         {
             Item.insertMany(defaultItems,function(err){
                 if(!err)
@@ -57,17 +54,16 @@ app.get("/about",function(req,res){
     res.render("about");
 });
 
-app.post("/", function(req,res){
-    
-    let item = req.body.task;
-    if(req.body.list === "Work"){
-        workItems.push(item);
-        res.redirect("/work");
-    }
-    else{
-        items.push(item);
-        res.redirect("/");
-    }
+app.post("/", function(req,res){ 
+    let itemName = req.body.task;
+    const newItem = new Item({
+        name: itemName
+    });
+    newItem.save(function(err){
+        if(err)
+        console.log(err);
+    });
+    res.redirect("/");
 });
 
 app.listen(3000,function(){
