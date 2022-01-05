@@ -1,7 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+const _ = require("lodash");
 
 const app = express();
 
@@ -54,7 +55,7 @@ app.get("/",function(req,res){
 });
 
 app.get("/:customListName",function(req,res){
-    const customListName = req.params.customListName;
+    const customListName = _.capitalize(req.params.customListName);
     List.findOne({name: customListName},function(err, foundList){
         if(!err)
         {
@@ -120,7 +121,7 @@ app.post("/delete",function(req,res){
     else{
         List.findOneAndUpdate({name: listName},
             {$pull: {items: {_id: checkedItemId}}},
-            function(err){
+            function(err,foundList){
                 if(err)
                 console.log(err);
             });
