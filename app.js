@@ -107,13 +107,25 @@ app.post("/", function(req,res){
 
 app.post("/delete",function(req,res){
     const checkedItemId = req.body.listItemId;
-    Item.deleteOne({_id: checkedItemId},function(err){
-        if(err)
-        console.log(err);
-        else
-        console.log("Item deleted from DB.");
-    });
-    res.redirect("/");
+    const listName = req.body.listName;
+    if(listName === "Today"){
+        Item.deleteOne({_id: checkedItemId},function(err){
+            if(err)
+            console.log(err);
+            else
+            console.log("Item deleted from DB.");
+        });
+        res.redirect("/");
+    }
+    else{
+        List.findOneAndUpdate({name: listName},
+            {$pull: {items: {_id: checkedItemId}}},
+            function(err){
+                if(err)
+                console.log(err);
+            });
+        res.redirect("/"+listName);    
+    }
 });
 
 app.listen(3000,function(){
