@@ -79,14 +79,30 @@ app.get("/about",function(req,res){
 
 app.post("/", function(req,res){ 
     let itemName = req.body.newItem;
+    let listName = req.body.list;
+
     const newItem = new Item({
         name: itemName
     });
-    newItem.save(function(err){
-        if(err)
-        console.log(err);
-    });
-    res.redirect("/");
+
+    if(listName === "Today")
+    {
+        newItem.save(function(err){
+            if(err)
+            console.log(err);
+        });
+        res.redirect("/");
+    }
+    else{
+        List.findOne({name: listName},function(err,foundList){
+            if(!err)
+            {
+                foundList.items.push(newItem);
+                foundList.save();
+            }
+        });
+        res.redirect("/"+listName);
+    }
 });
 
 app.post("/delete",function(req,res){
