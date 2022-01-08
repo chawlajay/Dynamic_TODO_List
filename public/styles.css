@@ -23,6 +23,17 @@ h1 {
   box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
 }
 
+.list_box {
+  /* max-width: 400px; */
+  display: flex;
+  /* flex-direction: row; */
+  flex-wrap: wrap;
+  margin: 50px auto 0px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
 #heading {
   background-color: #A683E3;
   text-align: center;
@@ -37,6 +48,14 @@ h1 {
 
 .item:last-child {
   border-bottom: 0;
+}
+
+.list_item {
+  min-height: 50px;
+  display: flex;
+  width: 50px;
+  align-items: center;
+  border-bottom: 1px solid #F1F1F1;
 }
 
 input:checked+p {           /* very important */
