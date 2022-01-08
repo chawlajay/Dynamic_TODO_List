@@ -5,18 +5,10 @@
     </div>
 
     <div class="list_box">
-        <div class="list_item">
-            Item 1
-        </div>
-        <div class="list_item">
-            Item 1
-        </div>
-        <div class="list_item">
-            Item 1
-        </div><div class="list_item">
-            Item 1
-        </div>
-        
-        
+        <% listNames.forEach(list => { %>
+            <div class="list_item">
+                <p><%= list.name %></p>
+            </div>
+        <% }); %>
     </div>
 <%- include('footer'); -%>

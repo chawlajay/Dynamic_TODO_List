@@ -57,12 +57,18 @@ h1 {
   border-radius: 5px;
   justify-content: center;
   align-items: center;
-  font-size: 150%;
   border-bottom: 1px solid #00204a;
   box-shadow: -5px 5px 10px 5px rgba(209, 14, 14, 0.3);
   background-color: #686370;
   /* color: #CBADFF; */
-  color: rgb(241, 223, 223);
+}
+
+.list_item p{
+  word-wrap:break-word;
+  padding: 10px 30px;
+  margin: 0;
+  font-size: 150%;
+  color: rgb(255, 255, 255);
 }
 
 input:checked+p {           /* very important */

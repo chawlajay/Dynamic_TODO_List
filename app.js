@@ -54,7 +54,14 @@ app.get("/",function(req,res){
 });
 
 app.get("/all-lists",function(req,res){
-    res.render("all_lists");
+    
+    List.find({},'-_id name',function(err, foundLists){
+        if(!err)
+        res.render("all_lists",{listNames: foundLists});
+        else
+        console.log(err);
+    });
+    
 });
 
 app.get("/:customListName",function(req,res){
