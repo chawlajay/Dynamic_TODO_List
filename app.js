@@ -50,8 +50,11 @@ app.get("/",function(req,res){
             });
         }
         res.render('list',{listTitle: "Today", listOfItems: foundItems});
-    });
-    
+    }); 
+});
+
+app.get("/all-lists",function(req,res){
+    res.render("all_lists");
 });
 
 app.get("/:customListName",function(req,res){

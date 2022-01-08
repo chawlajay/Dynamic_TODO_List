@@ -24,10 +24,9 @@ h1 {
 }
 
 .list_box {
-  /* max-width: 400px; */
   display: flex;
-  /* flex-direction: row; */
   flex-wrap: wrap;
+  justify-content: space-between;
   margin: 50px auto 0px;
   background: white;
   border-radius: 5px;
@@ -52,10 +51,13 @@ h1 {
 
 .list_item {
   min-height: 50px;
+  min-width: 10%;
   display: flex;
-  width: 50px;
+  margin: 10px;
+  border-radius: 5px;
   align-items: center;
-  border-bottom: 1px solid #F1F1F1;
+  border-bottom: 1px solid #00204a;
+  background-color: #A683E3;
 }
 
 input:checked+p {           /* very important */
