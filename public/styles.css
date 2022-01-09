@@ -23,6 +23,21 @@ h1 {
   box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
 }
 
+.back_to_lists{
+  position: absolute;
+  max-width: 200px;
+  top: 10px;
+  background: #054261;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
+.back_to_lists a{
+  text-decoration: none;
+  color: #f8f3ff;
+  font-weight: 700;
+}
+
 .list_box {
   display: flex;
   flex-wrap: wrap;
@@ -53,14 +68,13 @@ h1 {
   min-height: 50px;
   min-width: 15%;
   display: flex;
-  margin: 20px 30px 10px;
+  margin: 20px 30px 15px;
   border-radius: 5px;
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid #00204a;
   box-shadow: -5px 5px 10px 5px rgba(209, 14, 14, 0.3);
   background-color: #686370;
-  /* color: #CBADFF; */
 }
 
 .list_box a{
@@ -70,6 +84,7 @@ h1 {
   font-size: 150%;
   color: rgb(255, 255, 255);
   text-decoration: none;
+  font-weight: 700;
 }
 
 input:checked+p {           /* very important */
