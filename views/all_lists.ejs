@@ -6,9 +6,12 @@
 
     <div class="list_box">
         <% listNames.forEach(list => { %>
-            <div class="list_item">
-                <p><%= list.name %></p>
-            </div>
+            <% let path = "/list/" + list.name; %>    
+                <div class="list_item">
+                    <a href=<%= path %>>
+                        <%= list.name %>
+                    </a>
+                </div>
         <% }); %>
     </div>
 <%- include('footer'); -%>

@@ -1,5 +1,7 @@
 <%- include('header'); -%>
-
+    <div class="back_to_lists">
+        <p><a href="/list">Back to All Lists</a></p>
+    </div>
     <div class="box" id="heading">
         <h1><%= listTitle %></h1>
     </div>
@@ -15,7 +17,7 @@
             </form>
         <% }); %>
        
-        <form class="item" action="/" method="post">
+        <form class="item" action="/list" method="post">
             <input type="text" name="newItem" placeholder="enter task name..." autocomplete="off">
             <button type="submit" name="list" value=<%= listTitle %>>+</button>
         </form>
