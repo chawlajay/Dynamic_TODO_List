@@ -30,12 +30,24 @@ h1 {
   background: #054261;
   border-radius: 5px;
   box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .back_to_lists a{
   text-decoration: none;
   color: #f8f3ff;
   font-weight: 700;
+}
+
+.back_to_lists i{
+  padding: 0px 7px;
+  color: #f8f3ff;
+}
+
+.back_to_lists p{
+  padding: 10px 10px;
 }
 
 .list_box {
