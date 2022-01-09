@@ -63,12 +63,13 @@ h1 {
   /* color: #CBADFF; */
 }
 
-.list_item p{
+.list_box a{
   word-wrap:break-word;
-  padding: 10px 30px;
+  padding: 5% 5%;
   margin: 0;
   font-size: 150%;
   color: rgb(255, 255, 255);
+  text-decoration: none;
 }
 
 input:checked+p {           /* very important */
