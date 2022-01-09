@@ -53,7 +53,7 @@ app.get("/",function(req,res){
     }); 
 });
 
-app.get("/all-lists",function(req,res){
+app.get("/list",function(req,res){
     
     List.find({},'-_id name',function(err, foundLists){
         if(!err)
@@ -64,7 +64,7 @@ app.get("/all-lists",function(req,res){
     
 });
 
-app.get("/:customListName",function(req,res){
+app.get("/list/:customListName",function(req,res){
     const customListName = _.capitalize(req.params.customListName);
     List.findOne({name: customListName},function(err, foundList){
         if(!err)
@@ -88,7 +88,7 @@ app.get("/about",function(req,res){
     res.render("about");
 });
 
-app.post("/", function(req,res){ 
+app.post("/list", function(req,res){ 
     let itemName = req.body.newItem;
     let listName = req.body.list;
 
@@ -112,7 +112,7 @@ app.post("/", function(req,res){
                 foundList.save();
             }
         });
-        res.redirect("/"+listName);
+        res.redirect("/list/"+listName);
     }
 });
 
