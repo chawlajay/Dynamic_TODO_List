@@ -82,11 +82,16 @@ h1 {
   display: flex;
   margin: 20px 30px 15px;
   border-radius: 5px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #00204a;
   box-shadow: -5px 5px 10px 5px rgba(209, 14, 14, 0.3);
   background-color: #686370;
+}
+
+.list_item .delete-icon{
+  margin-right: 5px;
+  cursor: pointer;
 }
 
 .list_box a{
