@@ -1,0 +1,21 @@
+<%- include('header'); -%>
+
+    <div class="back_to_lists">
+        <i class="fas fa-arrow-left fa-lg"></i>
+        <p><a href="/list">Back to All Lists</a></p>
+    </div>
+
+    <div class="box" id="heading">
+        <h1><%= issueName %></h1>
+    </div>
+
+    <div class="box" id="error_box">
+        <h2>Possible issues</h2>
+        <ul style="list-style-type:square;">
+            <li>List don't exist (mostly)</li>
+            <li>Database side error!</li>
+            <li>Server side error!</li>
+        </ul>
+    </div>
+    
+<%- include('footer'); -%>

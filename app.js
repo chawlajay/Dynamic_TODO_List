@@ -59,8 +59,8 @@ app.get("/list/:customListName",function(req,res){
         if(!err)
         {
             if(!foundList){
-                console.log("Page not found");
-                res.redirect("/list");
+                console.log("Error: Page not found");
+                res.render("error",{issueName: "Error: Page not found"});
             }
             else
             res.render("list",{listTitle: customListName, listOfItems: foundList.items});
@@ -112,8 +112,9 @@ app.post("/list/newList",function(req,res){
             res.render("list",{listTitle: customListName, listOfItems: foundList.items});
         }
         else{
-            console.log(err);
-            res.redirect("/list");
+            console.log("Error: Unable to Create List");
+            res.render("error",{issueName: "Error: Unable to Create List"});
+            // res.redirect("/list");
         }
     });
 });
@@ -124,7 +125,11 @@ app.post("/delete",function(req,res){
     if(listName === "Today"){
         Item.deleteOne({_id: checkedItemId},function(err){
             if(err)
-            console.log(err);
+            {
+                console.log(err);
+                console.log("Error: Unable to Delete item");
+                res.render("error",{issueName: "Error: Unable to Delete item"});
+            }
             else
             console.log("Item deleted from DB.");
         });
@@ -134,8 +139,11 @@ app.post("/delete",function(req,res){
         List.findOneAndUpdate({name: listName},
             {$pull: {items: {_id: checkedItemId}}},
             function(err,foundList){
-                if(err)
+                if(err){
                 console.log(err);
+                console.log("Error: Unable to Delete item");
+                res.render("error",{issueName: "Error: Unable to Delete item"});
+                }
             });
         res.redirect("/"+listName);    
     }
@@ -144,8 +152,11 @@ app.post("/delete",function(req,res){
 app.post("/delete/list",function(req,res){
 const listName = req.body.listName;
 List.deleteOne({name: listName},function(err){
-    if(err)
+    if(err){
     console.log(err);
+    console.log("Error: Unable to Delete list");
+    res.render("error",{issueName: "Error: Unable to Delete List"});
+    }
     else
     console.log("Deleted the list");
 });

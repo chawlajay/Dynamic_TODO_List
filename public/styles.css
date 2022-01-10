@@ -27,6 +27,12 @@ h1 {
   box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
 }
 
+#error_box{
+  padding: 1%;
+  line-height: 1.5;
+  font-size: 20px;
+}
+
 .create_list_form{
   position: absolute;
   right: 30px;
