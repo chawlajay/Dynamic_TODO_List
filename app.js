@@ -80,29 +80,23 @@ app.get("/about",function(req,res){
 app.post("/list", function(req,res){ 
     let itemName = req.body.newItem;
     let listName = req.body.list;
-
+console.log(listName);
     const newItem = new Item({
         name: itemName
     });
 
-    if(listName === "Today")
-    {
-        newItem.save(function(err){
-            if(err)
-            console.log(err);
-        });
-        res.redirect("/");
-    }
-    else{
         List.findOne({name: listName},function(err,foundList){
             if(!err)
             {
+                console.log(listName);
                 foundList.items.push(newItem);
                 foundList.save();
             }
         });
-        res.redirect("/list/"+listName);
-    }
+        console.log(listName);
+        let path = "/list/"+listName;
+        console.log(listName);
+        res.redirect(path);
 });
 
 app.post("/list/newList",function(req,res){
