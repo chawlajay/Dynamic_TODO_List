@@ -39,18 +39,7 @@ const listSchema = {
 const List = mongoose.model("List",listSchema);
 
 app.get("/",function(req,res){
-    Item.find({},function(err,foundItems){
-        if(foundItems.length === 0)
-        {
-            Item.insertMany(defaultItems,function(err){
-                if(!err)
-                console.log("Successfully inserted default items in DB.");
-                else
-                console.log(err);
-            });
-        }
-        res.render('list',{listTitle: "Today", listOfItems: foundItems});
-    }); 
+    res.render("home"); 
 });
 
 app.get("/list",function(req,res){
