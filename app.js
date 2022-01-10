@@ -65,7 +65,7 @@ app.get("/list/:customListName",function(req,res){
                 });
             
                 list.save();
-                res.redirect("/"+customListName);
+                res.redirect("/list/"+customListName);
             }
             else
             res.render("list",{listTitle: customListName, listOfItems: foundList.items});
@@ -103,6 +103,11 @@ app.post("/list", function(req,res){
         });
         res.redirect("/list/"+listName);
     }
+});
+
+app.post("/list/newList",function(req,res){
+    let path = "/list/" + req.body.newListName;
+    res.redirect(path);
 });
 
 app.post("/delete",function(req,res){
