@@ -80,7 +80,7 @@ app.get("/about",function(req,res){
 app.post("/list", function(req,res){ 
     let itemName = req.body.newItem;
     let listName = req.body.list;
-console.log(listName);
+// console.log(listName);
     const newItem = new Item({
         name: itemName
     });
@@ -88,14 +88,14 @@ console.log(listName);
         List.findOne({name: listName},function(err,foundList){
             if(!err)
             {
-                console.log(listName);
+                // console.log(listName);
                 foundList.items.push(newItem);
                 foundList.save();
             }
         });
-        console.log(listName);
+        // console.log(listName);
         let path = "/list/"+listName;
-        console.log(listName);
+        // console.log(listName);
         res.redirect(path);
 });
 
