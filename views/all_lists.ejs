@@ -18,7 +18,12 @@
                     <a href=<%= path %>>
                         <%= list.name %>
                     </a>
-                    <i class="far fa-trash-alt delete-icon fa-lg"></i>
+                    <form action="/delete/list" method="post">
+                        <input type="hidden" name="listName" value=<%= list.name %>>
+                        <button class="delete_list_button" type="submit">
+                            <i class="far fa-trash-alt delete-icon fa-lg"></i>
+                        </button>
+                    </form>
                 </div>
         <% }); %>
     </div>

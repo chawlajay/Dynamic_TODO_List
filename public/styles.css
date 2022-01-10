@@ -208,6 +208,18 @@ form.item {
   /* margin-left: 20px; */
 }
 
+.delete_list_button{
+  font-size: 20px;
+  background-color: inherit;
+  width: auto;
+  padding: auto;
+  color:aliceblue;
+}
+
+.delete_list_button:hover{
+  font-size: 25px;
+}
+
 button {
   min-height: 50px;
   width: 50px;

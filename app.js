@@ -59,13 +59,8 @@ app.get("/list/:customListName",function(req,res){
         if(!err)
         {
             if(!foundList){
-                const list = new List({
-                    name: customListName,
-                    items: defaultItems
-                });
-            
-                list.save();
-                res.redirect("/list/"+customListName);
+                console.log("Page not found");
+                res.redirect("/list");
             }
             else
             res.render("list",{listTitle: customListName, listOfItems: foundList.items});
@@ -100,8 +95,27 @@ app.post("/list", function(req,res){
 });
 
 app.post("/list/newList",function(req,res){
-    let path = "/list/" + req.body.newListName;
-    res.redirect(path);
+    const customListName = _.capitalize(req.body.newListName);
+    List.findOne({name: customListName},function(err, foundList){
+        if(!err)
+        {
+            if(!foundList){
+                const list = new List({
+                    name: customListName,
+                    items: defaultItems
+                });
+            
+                list.save();
+                res.redirect("/list/"+customListName);
+            }
+            else
+            res.render("list",{listTitle: customListName, listOfItems: foundList.items});
+        }
+        else{
+            console.log(err);
+            res.redirect("/list");
+        }
+    });
 });
 
 app.post("/delete",function(req,res){
@@ -127,6 +141,17 @@ app.post("/delete",function(req,res){
     }
 });
 
+app.post("/delete/list",function(req,res){
+const listName = req.body.listName;
+List.deleteOne({name: listName},function(err){
+    if(err)
+    console.log(err);
+    else
+    console.log("Deleted the list");
+});
+res.redirect("/list");
+});
+
 app.listen(3000,function(){
     console.log("Server started at port 3000");
-})
+});
