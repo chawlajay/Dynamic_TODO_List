@@ -1,5 +1,5 @@
 # Dynamic_TODO_List
-This is the dynamic ToDo List, in which url is public (deployed online - herokuApp), database is mongoDB and based on node, express &amp; mongoose.
+This is the dynamic ToDo List, database is mongoDB and based on node, express &amp; mongoose.
 
 ### How to add a new list?
 - Go to lists page
